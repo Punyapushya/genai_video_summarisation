@@ -58,7 +58,7 @@ def extract_frames(video_path, interval_seconds=5):
             current_frame += fps * interval_seconds
             continue
 
-        frame_path = os.path.join(frames_directory, f"frame_{frame_number:03d}.jpg")
+        frame_path = os.path.join(frames_directory, f"frame_{frame_number:03}.jpg")
         cv2.imwrite(frame_path, frame)
         current_frame += fps * interval_seconds
         frame_number += 1
@@ -69,7 +69,6 @@ def extract_frames(video_path, interval_seconds=5):
 def describe_video():
     descriptions = []
     for file in sorted(os.listdir(frames_directory)):
-        frame_path = os.path.join(frames_directory, file)
         descriptions.append(f"{file}")
     prompt = "You are a helpful assistant. Summarize the video based on the following frame filenames:\n" + "\n".join(descriptions)
     return model.invoke(prompt)
@@ -81,11 +80,11 @@ def rewrite_summary(summary):
 
 # Turn summary into a story
 def turn_into_story(summary):
-    prompt = f"Turn the following video summary into a narrative story with characters, setting, conflict, and resolution:\n\n{summary}"
+    prompt = f"Turn the following video summary into a narrative story with character, setting, conflict, and resolution:\n\n{summary}"
     return model.invoke(prompt)
 
 # Streamlit UI
-st.title("📺 Punya - YouTube/Uploaded Video Summarizer Using Groq LLM")
+st.title("📺 PunyaAI - YouTube/Uploaded Video Summarizer Using Groq LLM")
 #st.image("PragyanAI_Transperent.png")
 
 youtube_url = st.text_input("Paste a YouTube video URL:", placeholder="https://www.youtube.com/watch?v=example")
