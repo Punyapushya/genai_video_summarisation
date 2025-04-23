@@ -13,7 +13,7 @@ os.makedirs(frames_directory, exist_ok=True)
 
 # Initialize Groq model
 model = ChatGroq(
-    groq_api_key=st.secrets["GROQ_API_KEY"],
+    groq_api_key=st.secrets["GTOQ_API_KEY"],
     model_name="meta-llama/llama-4-scout-17b-16e-instruct"
 )
 
@@ -86,7 +86,7 @@ def turn_into_story(summary):
 
 # Streamlit UI
 st.title("📺 PragyanAI - YouTube/Uploaded Video Summarizer Using Groq LLM")
-st.image("PragyanAI_Transperent.png")
+#st.image("PragyanAI_Transperent.png")
 
 youtube_url = st.text_input("Paste a YouTube video URL:", placeholder="https://www.youtube.com/watch?v=example")
 
